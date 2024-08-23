@@ -39,8 +39,8 @@ const ProductOptions = () => {
 
     return (
         <>
-            <div className="flex flex-col p-6 bg-white rounded-lg shadow-md max-w-md mx-auto">
-                <h2 className="font-inter text-center text-custom-baby-pink font-bold mb-6 text-xl">YAY! It's BOGO</h2>
+            <div className="flex flex-col p-6 bg-white rounded-lg shadow-md max-w-md mx-auto my-4">
+                <h2 className="font-inter text-center text-custom-baby-pink font-bold mb-6 text-3xl">YAY! It's BOGO</h2>
                 <div className=" flex flex-col font-inter ">
                     {options.map((option) => (
                         <div key={option?.id}
@@ -49,9 +49,9 @@ const ProductOptions = () => {
                                 className={`flex flex-row flex-1 transition-max-height duration-300 ease-in-out ${selectedOption?.id === option?.id ? 'h-60' : 'h-24'} `}
                                 onClick={() => handleOptionChange(option)}
                             >
-                                {selectedOption?.id != option?.id && <ColorStripPattern discount={option?.discount} />}
+                                {selectedOption?.id !== option?.id && <ColorStripPattern discount={option?.discount} />}
                                 <div className={`flex w-full flex-row item-center ${selectedOption?.id === option?.id ? "bg-custom-light-pink" : ""}`}>
-                                    <div className={`custom-radio ml-4 flex flex-row pt-4 cursor-pointer ${selectedOption?.id != option?.id ? "items-center" : "pt-8"}`} >
+                                    <div className={`custom-radio ml-4 flex flex-row pt-4 cursor-pointer ${selectedOption?.id !== option?.id ? "items-center" : "pt-8"}`} >
                                         <label>
                                             <input
                                                 type="radio"
@@ -76,7 +76,7 @@ const ProductOptions = () => {
                                                     ${(option?.price * option?.discount) / 100}.00 USD
                                                 </p>
                                             }
-                                            <p id="actual-price" className={`p-2 ${selectedOption?.id == option?.id ? 'text-xs font-bold text-gray-500 line-through' : 'text-sm font-bold'}`}>
+                                            <p id="actual-price" className={`p-2 ${selectedOption?.id === option?.id ? 'text-xs font-bold text-gray-500 line-through' : 'text-sm font-bold'}`}>
                                                 ${option?.price}.00 USD
                                             </p>
                                         </div>
@@ -84,7 +84,7 @@ const ProductOptions = () => {
                                         {selectedOption?.id === option?.id && <ExpandableOptions isExpanded={selectedOption?.id === option?.id} z ref={(el) => (optionRefs.current[selectedOption?.id] = el)} />}
                                     </div>
                                     {(option?.id === 1) &&
-                                        <div className={`font-inter mt-6 items-center`} style={selectedOption?.id != 1 ? { margin: "auto" } : {}}>
+                                        <div className={`font-inter mt-6 items-center`} style={selectedOption?.id !== 1 ? { margin: "auto" } : {}}>
                                             <p className="text-custom-baby-pink font-semibold text-sm" style={{ float: "left" }}>Most Popular</p>
                                         </div>
                                     }
